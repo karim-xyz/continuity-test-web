@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <script src="https://www.desmos.com/api/v1.11/calculator.js?apiKey=b1411148633e4ca59ee5fd728b28c593"></script>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
