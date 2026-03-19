@@ -9,14 +9,15 @@
         <input type="text" id="func" name="func" placeholder="enter your function (LaTeX)" onFocus="clearRes()">
         <input type="number" id="numb" name="numb" placeholder="enter a number" onFocus="clearRes()">
         
-        <button type="button" id="check" onClick="check()">check</button>
-        <div id="res">
+        <button type="button" id="check-btn" onClick="check()">check</button>
+        <div id="loader"></div>
+        <div id="res-field">
             <p id="res-text"></p>
-            <button type="button" id="graph" onClick="draw()">graph</button>
+            <button type="button" id="graph-btn" onClick="draw()">graph</button>
             <div id="calculator"></div>
         </div>
         
-        <button type="button" id="clear" onClick="clearAll()">clear</button>
+        <button type="button" id="clear-btn" onClick="clearAll()">clear</button>
     </div>
     
     <script src={{ url_for('static', filename='script.js')}}></script>
