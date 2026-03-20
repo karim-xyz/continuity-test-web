@@ -1,10 +1,11 @@
 # continuity-test-web
+<https://continuitytest.pythonanywhere.com>
 
 a web version of my project [continuity-test](https://github.com/karim-xyz/continuity-test)
 
 like the original project it uses [sympy](https://github.com/sympy/sympy) for limits and stuff like that
 
-I used ![flask](https://github.com/pallets/flask.git) for backend and the [desmos api](https://www.desmos.com/api/v1.11) for graphing
+I used [flask](https://github.com/pallets/flask.git) for backend and the [desmos api](https://www.desmos.com/api/v1.11) for graphing
 
 ![ui](ui.jpg)
 

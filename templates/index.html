@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main-container">
-        <input type="text" id="func" name="func" placeholder="enter your function (LaTeX)" onFocus="clearRes()">
+    <main class="container">
+        <input type="text" id="func" name="func" placeholder="enter your function" onFocus="clearRes()">
         <input type="number" id="numb" name="numb" placeholder="enter a number" onFocus="clearRes()">
         
         <button type="button" id="check-btn" onClick="check()">check</button>
@@ -18,7 +18,29 @@
         </div>
         
         <button type="button" id="clear-btn" onClick="clearAll()">clear</button>
-    </div>
+    </main>
+    <aside>
+        <section class="container">
+            <p>tips</p>
+            <ul>
+                <li>use LaTeX to write your functions (as you would do in desmos)</li>
+            </ul>
+        </section>
+        <section class="container">
+            <p>useful links</p>
+            <ul>
+                <li><a href="https://www.geeksforgeeks.org/maths/continuity-at-a-point" target="_blank">continuity at a point<a/></li>
+                <li><a href="https://www.desmos.com/calculator/wttrtvpr8a" target="_black">discontinuity types</a></li>
+            </ul>
+        </section>
+        <section class="container">
+            <p>let's connect!</p>
+            <div>
+                <a href="https://github.com/karim-xyz" target="_blank"><img src={{ url_for('static', filename='github.svg')}} alt="github"></a>
+                <a href="mailto:abdelkarim2dev@gmail.com" target="_blank"><img src={{ url_for('static', filename='email.svg')}} alt="email"></a>
+            </div>
+        </section>
+    </aside>
     
     <script src={{ url_for('static', filename='script.js')}}></script>
 {% endblock %}

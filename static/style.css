@@ -7,26 +7,34 @@
 body {
     background-color: #111111;
     font-family: monospace;
+    color: white;
+    display: flex;
+    gap: 5%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 5%;
 }
 
-.main-container {
+.container {
+    border: 1px dashed gray;
+    padding: 5%;
+}
+
+main {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    width: 90%;
-    margin: 5% 0 5% 5%;
-    padding: 5% 5%;
-    border: 1px dashed gray;
+    width: 65%;
 }
 
-#func, #numb {
+input[type="text"], input[type="number"] {
     background: transparent;
+    color: white;
     border: none;
     border-bottom: 1px solid white;
     width: 100%;
     height: 30px;
     margin-bottom: 3%;
-    color: white;
     outline: none;
 }
 
@@ -82,7 +90,53 @@ button {
     height: 500px;
 }
 
+aside {
+    display: grid;
+    grid-row-gap: 5%;
+    width: 30%;
+    top: 0;
+    position: sticky;
+}
+
+section {
+    width: 100%;
+}
+
+
+section p {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+li {
+    list-style-position: inside;
+    margin-bottom: 0.5rem;
+}
+
+a {
+    color: white;
+}
+
+img {
+    width: 34px;
+    height: 34px;
+    filter: invert(100%);
+    opacity: 60%;
+}
+
+img:hover {
+    opacity: 100%;
+}
+
 @media screen and (max-width: 480px) {
+    main, aside {
+        width: 100%;
+    }
+
+    aside {
+        margin-top: 5%;
+    }
+    
     #calculator {
         width: 285px;
         height: 285px;
