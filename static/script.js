@@ -12,24 +12,15 @@ var graphBtn = document.getElementById('graph-btn')
 
 var f, c
 
-function draw() {
-    if (elt.style.display === 'none') {
-        elt.style.display = 'block'
-        calculator.setExpression({ id: 'f', latex: f })
-    } else {
-        elt.style.display = 'none'
-    }
-}
-
 async function connect() {
     const response = await fetch('/check', 
         {method: 'POST', 
          headers: {'Content-Type': 'application/json',}, 
-         body: JSON.stringify({"function": f, "number": c})
+         body: JSON.stringify({'function': f, 'number': c})
         })
     if (!response.ok) {
         const error = await response.json()
-        return error
+        return JSON.stringify({'error': error})
     } else {
         const data = await response.json()
         return data
@@ -43,47 +34,49 @@ async function check() {
     loader.style.display = 'block'
 
     const resp = await connect()
+
+    loader.style.display = 'none'
+    checkBtn.style.display = 'none'
+    resField.style.display = 'block'
     
     if ('error' in resp) {
         console.error(resp.error)
 
-        loader.style.display = 'none'
-
-        checkBtn.style.display = 'none'
-        resField.style.display = 'block'
-        if (resp.error === '1') {
-            resText.innerHTML = "a field is missing"
-        } else if (resp.error === '2') {
-            resText.innerHTML = "invalid function"
+        if (resp.error === 'a field is missing' || resp.error === 'invalid function') {
+            resText.innerHTML = resp.error
+        } else {
+            resText.innerHTML = "unknown error"
         }
 
     } else {
         console.log("Response: ", resp)
 
-        loader.style.display = 'none'
-
         const isContinuous = resp.continuous === true ? "continuous" : "not continuous"
 
-        checkBtn.style.display = 'none'
-        resField.style.display = 'block'
         resText.innerHTML = `f is ${isContinuous} at ${c}`
         graphBtn.style.display = 'block'
     }
 }
 
-function clearAll() {
-    func.value = ""
-    numb.value = ""
+function draw() {
+    if (elt.style.display === 'none') {
+        elt.style.display = 'block'
+        calculator.setExpression({ id: 'f', latex: f })
+    } else {
+        elt.style.display = 'none'
+    }
+}
+
+function clearRes() {
     checkBtn.style.display = 'block'
     resField.style.display = 'none'
     graphBtn.style.display = 'none'
     elt.style.display = 'none'
 }
 
-function clearRes() {
-    checkBtn.style.display = 'block'
-    graphBtn.style.display = 'none'
-    resField.style.display = 'none'
-    elt.style.display = 'none'
+function clearAll() {
+    func.value = ""
+    numb.value = ""
+    clearRes()
 }
 

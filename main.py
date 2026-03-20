@@ -15,12 +15,12 @@ def check():
     c = req.get('number')
 
     if f == '' or c == '':
-        return jsonify({'error': '1'}), 400
+        return jsonify({'error': 'a field is missing'})
 
     c = float(c)
 
     if not is_latex(f):
-        return jsonify({'error': '2'}), 400
+        return jsonify({'error': 'invalid function'})
 
     print(f"request recieved successfully f = {f} c = {c}")
     
